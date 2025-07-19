@@ -47,4 +47,59 @@ cd data-your-first-rnn
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
+## 🔄 Usage
+1. Prepare Data
+Place your .txt files for each language in the data/ folder (e.g. English.txt, Italian.txt).
+
+2. Train the Model
+```bash
+Copy
+Edit
+python src/train.py \
+  --data_dir data/ \
+  --hidden_dim 128 \
+  --learning_rate 0.005 \
+  --epochs 10
+```
+3. Monitor Training
+Check the loss curve and accuracy output:
+```
+python-repl
+Copy
+Edit
+Epoch 1/10 — Loss: 3.12 — Accuracy: 12.5%
+```
+4. Test & Evaluate
+```bash
+Copy
+Edit
+python src/train.py --mode test --model_path models/rnn_epoch10.pkl
+Generates metrics and a confusion matrix to assess performance.
+```
+## 🧠 How It Works
+One-hot encoding of names as sequence of character vectors.
+
+At each time step t:
+
+hidden_t = tanh(U·x_t + W·hidden_{t-1})
+
+output_t = softmax(V·hidden_t)
+
+Loss: Sum of cross-entropy across time steps.
+
+BPTT: Gradients are computed by unrolling through time and applying chain rule.
+
+Parameter updates: Performed via SGD with optional learning rate decay.
+
+## 📊 Evaluation / Results
+Training and validation loss decreased consistently.
+
+Test accuracy ranges between 35–45% depending on data and training length.
+
+Confusion matrix reveals common confusions (e.g. Spanish ↔ Portuguese).
+
+This simple RNN forms a solid foundation for further enhancements like LSTM, GRU, or using PyTorch.
+
+
 
