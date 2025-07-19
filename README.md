@@ -1,4 +1,4 @@
-# 🧠 Your First RNN — From Scratch with Python + NumPy
+# 🧠 RNN — From Scratch with Python + NumPy
 
 A hands‑on tutorial-driven project to build your first **Recurrent Neural Network (RNN)** from scratch using Python and NumPy. This RNN performs **character-level language classification**, predicting the language origin of names (e.g., detecting if "Rodrigo" is Portuguese).
 
